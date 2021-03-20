@@ -33,7 +33,7 @@ try:
 except:
 	IP = '127.0.0.1'
 s.close()
-vice_url = "http://" + 	'192.168.122.1' + ":" + port + 'secureevote/'
+vice_url = "http://" + 	'127.0.0.1' + ":" + port + 'secureevote/'
 
 encode_decode_dict = {'a': '011000', 'b': '000010', 'c': '101101', 'd': '011010', 'e': '101111', 'f': '110100',
 'g': '010110', 'h': '000100', 'i': '001111', 'j': '110110', 'k': '000111', 'l': '110010',
@@ -313,7 +313,7 @@ def Mail(sub, msg, email):
 	send_mail(
 	    sub,
 	    msg,
-	    'secureevote@gmail.com',
+	    'secureevotingsystem2022@gmail.com',
 	    [str(email)],
 	    fail_silently=False,
 	)
@@ -357,7 +357,7 @@ def voter_register(request, pk):
 				# send_mail(
 				#     'Cast Your Vote',
 				#     msg,
-				#     'secureevote@gmail.com',
+				#     'secureevotingsystem2022@gmail.com',
 				#     [str(email)],
 				#     fail_silently=False,
 				# )
@@ -438,7 +438,7 @@ def threshold(request, pk):
 				# send_mail(
 				#     'Your Hash Key',
 				#     msg,
-				#     'secureevote@gmail.com',
+				#     'secureevotingsystem2022@gmail.com',
 				#     [str(i.Email)],
 				#     fail_silently=False,
 				# )

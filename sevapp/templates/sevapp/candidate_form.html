@@ -128,10 +128,7 @@
       </div>
     </div>
   <div class="footer sticky-bottom">
-    <p> content owned, updated and maintained by secureevote@gmail.com
-    <a href="#"><img src="{% static 'image/tw-icon.png' %}"></a>
-    <a href="#"><img src="{% static 'image/fb-icon.png' %}"></a>
-    </p>         
+    <p> content owned, updated and maintained by secureevotingsystem2022@gmail.com</p>         
     </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -155,32 +152,3 @@
   </script>
 </body>
 </html>
-
-
-
-<!-- 
-{% load static %}
-{% block name %}
-  <h3>Welcome {{ name }}</h3>
-{% endblock %}
-{% block content %}
-  <div class="container">
-    <div class="jumbotron">
-      {% if registered %}
-        <h1>Go to <a href="{% url 'login'%}">Login</a> Page !</h1>
-      {% else %}
-        <h1>Add Here</h1>
-        <h3>Just fill out the form.</h3>
-
-        <form method="POST" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{ candidate_form.as_p }}
-          <input type="submit" name="" value="Register">
-        </form>
-
-      {% endif %}
-
-    </div>
-
-  </div>
-{% endblock %} -->

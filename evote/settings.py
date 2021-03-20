@@ -20,12 +20,15 @@ STATIC_DIR = os.path.join(BASE_DIR, "sevapp/static")
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'qg5tg(_tq5g0s1p_hr&u(9)2%dw_v(!67j%to+t*6sk4z+st3s'
+#SECRET_KEY = 'qg5tg(_tq5g0s1p_hr&u(9)2%dw_v(!67j%to+t*6sk4z+st3s'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&k3q+pmu)5%asj6yjpkag')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.43.42', '192.168.225.205','192.168.43.154', '192.168.122.1']
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+
+ALLOWED_HOSTS = ['192.168.43.42', '192.168.225.205','192.168.43.154', '192.168.122.1', '127.0.0.1']
 
 
 # Application definition
@@ -133,9 +136,10 @@ LOGIN_URL = '/login/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_PASSWORD = '*********'
-EMAIL_HOST_USER = 'secureevote@gmail.com'
+EMAIL_HOST_PASSWORD = 'crypto2022'
+EMAIL_HOST_USER = 'secureevotingsystem2022@gmail.com'
 EMAIL_USE_SSL = False
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
