@@ -26,13 +26,14 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.styles import getSampleStyleSheet
 
 s = socket(AF_INET, SOCK_DGRAM)
-port = '8080/'
+port = '8000/'
 try:
 	s.connect(('8.8.8.8', 8001))
 	IP = s.getsockname()[0]
 except:
 	IP = '127.0.0.1'
 s.close()
+
 vice_url = "http://" + 	'127.0.0.1' + ":" + port + 'secureevote/'
 
 encode_decode_dict = {'a': '011000', 'b': '000010', 'c': '101101', 'd': '011010', 'e': '101111', 'f': '110100',
@@ -618,7 +619,7 @@ def vote(request, slug):
 		return render(request, 'sevapp/voter.html', context)
 	elif request.method == 'POST' and request.POST:
 		vote = request.POST.get('vote')
-		if vote is not 'NOTA':
+		if vote != 'NOTA':
 			obj = Candidate.objects.get(user_id=vote)
 			obj.votes = obj.votes + 1
 			obj.save()
@@ -662,8 +663,10 @@ def results(request, pk = 0):
 				if i.Hash_key == '':
 					context = {'pass':1, 'fail': 1, 'obj':obj, 'process':process}
 					return render(request, 'sevapp/results.html', context)
+				
 				a = [int(i.Hash_key[:1]), int(i.Hash_key[1:len(i.Hash_key)])]
 				shares.append(tuple(a))
+		
 			secret = recover_secret(shares)
 			if secret == int(admin.Hash_key):
 				Election_name = obj.election
